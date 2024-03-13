@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, TextInput } from "react-native";
+import { View, StyleSheet, TextInput } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
 const SearchBar = ({ searchTerm, setSearchTerm, onTermSubmit }) => {
