@@ -1,31 +1,11 @@
 import { StyleSheet, View, Text } from "react-native";
 import SearchBar from "../components/SearchBar";
-import { useEffect, useState } from "react";
-import api from "../../api";
+import { useState } from "react";
+import { useResults } from "../hooks/useResults";
 
 const SearchScreen = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [results, setResults] = useState([]);
-  const [error, setError] = useState("");
-
-  const searchApi = async (initialTerm) => {
-    try {
-      const response = await api.get("/search", {
-        params: {
-          limit: 50,
-          term: initialTerm || searchTerm,
-          location: "san jose",
-        },
-      });
-      setResults(response.data.businesses);
-    } catch (err) {
-      setError("Something Went Wrong");
-    }
-  };
-
-  useEffect(() => {
-    searchApi("pasta");
-  }, []);
+  const { results, error, searchApi } = useResults();
 
   return (
     <View style={styles.search}>
