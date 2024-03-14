@@ -23,7 +23,7 @@ const ResultsList = ({ header, results }) => {
           return (
             <TouchableOpacity
               onPress={() =>
-                navigate("ResultsShow", { id: "Hello", name: "Jello" })
+                navigate("ResultsShow", { id: item.id, image: item.image_url })
               }
             >
               <ResultsDetails {...item} />
