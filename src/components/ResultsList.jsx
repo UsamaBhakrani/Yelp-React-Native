@@ -1,4 +1,5 @@
-import { FlatList, Image, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
+import ResultsDetails from "./ResultsDetails";
 
 const ResultsList = ({ header, results }) => {
   return (
@@ -11,12 +12,7 @@ const ResultsList = ({ header, results }) => {
         data={results}
         keyExtractor={(result) => result.id}
         renderItem={({ item }) => {
-          return (
-            <View style={styles.card}>
-              {/* <Image source={item.image_url} /> */}
-              <Text>{item.name}</Text>
-            </View>
-          );
+          return <ResultsDetails {...item} />;
         }}
       />
     </View>
@@ -24,19 +20,14 @@ const ResultsList = ({ header, results }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    marginHorizontal: 10,
+  },
   text: {
     fontSize: 20,
     fontWeight: "bold",
   },
   list: {},
-  card: {
-    height: 150,
-    width: 220,
-    borderRadius: 10,
-    backgroundColor: "coral",
-    margin: 5,
-  },
 });
 
 export default ResultsList;
